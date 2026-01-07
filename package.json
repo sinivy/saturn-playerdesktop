@@ -1,0 +1,52 @@
+{
+  "name": "saturn",
+  "version": "1.0.0",
+  "description": "Pixel art music player",
+  "main": "main.js",
+  "author": "sinivy",
+  "license": "MIT",
+
+  "scripts": {
+    "start": "electron .",
+    "build:linux": "electron-builder --linux",
+    "build:win": "electron-builder --win"
+  },
+
+  "devDependencies": {
+    "electron": "^39.2.4",
+    "electron-builder": "^26.0.12"
+  },
+
+  "build": {
+    "appId": "com.sinivy.saturn",
+    "productName": "Saturn",
+    "asar": true,
+
+    "files": [
+      "**/*",
+      "!node_modules/.cache/**"
+    ],
+
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "AudioVideo",
+      "icon": "icon.png"
+    },
+
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.png"
+    },
+
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}

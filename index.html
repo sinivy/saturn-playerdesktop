@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saturn</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!--BARRA SUPERIOR-->
+    <div class="title-bar">
+        <div class="drag-region">saturn.mp3</div>
+
+        <div class="window-controls">
+            <button class="min-btn" id="btnMin">
+                <img id="iconMin" src="icon-min.png" alt="Minimize">
+            </button>
+
+            <button class="close-btn" id="btnClose">
+                <img id="iconClose" src="icon-close.png" alt="Close">
+            </button>
+        </div>
+    </div>
+
+    <!-- PLAYER -->
+    <div class="player-container">
+        <div class="pixel-frame">
+
+            <div class="screen" id="dropArea">
+                <img id="coverImage" src="default-cover2.png" class="cover-image" alt="Cover">
+                <p class="song-title">drag your song here</p>
+
+                <div class="controls">
+                    <button id="prevBtn" class="img-button"><img id="btnPrevImg" src="btn-prev.png"></button>
+                    <button id="playPause" class="img-button"><img id="btnPlayImg" src="btn-play.png"></button>
+                    <button id="nextBtn" class="img-button"><img id="btnNextImg" src="btn-next.png"></button>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+            </div>
+
+            <input type="file" id="fileInput" accept="audio/*" hidden>
+            <audio id="audio"></audio>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const btnMin = document.getElementById("btnMin");
+    const btnClose = document.getElementById("btnClose");
+
+    const iconMin = document.getElementById("iconMin");
+    const iconClose = document.getElementById("iconClose");
+
+    const coverImage = document.getElementById("coverImage");
+
+    const btnPrevImg = document.getElementById("btnPrevImg");
+    const btnPlayImg = document.getElementById("btnPlayImg");
+    const btnNextImg = document.getElementById("btnNextImg");
+
+    // ÍCONES DA JANELA
+    iconMin.src = window.assetPaths.asset("icon-min.png");
+    iconClose.src = window.assetPaths.asset("icon-close.png");
+
+    // CAPA PADRÃO
+    coverImage.src = window.assetPaths.asset("default-cover2.png");
+
+    // BOTÕES DO PLAYER
+    btnPrevImg.src = window.assetPaths.asset("btn-prev.png");
+    btnPlayImg.src = window.assetPaths.asset("btn-play.png");
+    btnNextImg.src = window.assetPaths.asset("btn-next.png");
+
+    // Eventos Electron
+    btnMin.onclick = () => window.electronAPI.minimize();
+    btnClose.onclick = () => window.electronAPI.close();
+});
+</script>
+
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
